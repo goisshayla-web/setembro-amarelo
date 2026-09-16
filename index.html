@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>✨ Inspire-se</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(circle at 20% 20%, #ff7eb3 0%, transparent 25%),
+                radial-gradient(circle at 80% 80%, #0a20e0 0%, transparent 30%),
+                linear-gradient(135deg, #141e30, #243b55);
+
+            position: relative;
+        }
+
+        /* Bolhas decorativas */
+        .bolha {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.5;
+            animation: flutuar 8s infinite ease-in-out;
+        }
+
+        .bolha:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background: #ff7eb3;
+            top: 10%;
+            left: 10%;
+        }
+
+        .bolha:nth-child(2) {
+            width: 160px;
+            height: 160px;
+            background: #7c6cff;
+            bottom: 5%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .bolha:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            background: #00e5ff;
+            top: 70%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes flutuar {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-30px) translateX(20px);
+            }
+        }
+
+        /* Cartão principal */
+        .container {
+            width: 90%;
+            max-width: 700px;
+            padding: 50px 40px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.35),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
+
+            position: relative;
+            z-index: 2;
+
+            animation: aparecer 1s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .icone {
+            font-size: 55px;
+            margin-bottom: 10px;
+
+            animation:
+                brilho 2s infinite alternate,
+                flutuarIcone 3s infinite ease-in-out;
+        }
+
+        @keyframes brilho {
+            from {
+                filter: drop-shadow(0 0 5px #ffd700);
+            }
+
+            to {
+                filter: drop-shadow(0 0 20px #ffd700);
+            }
+        }
+
+        @keyframes flutuarIcone {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        h1 {
+            color: white;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitulo {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* Área da frase */
+        .frase-box {
+            min-height: 170px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background: rgba(0, 0, 0, 0.15);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            margin-bottom: 25px;
+        }
+
+        #frase {
+            color: white;
+            font-size: 24px;
+            line-height: 1.6;
+            font-weight: 500;
+
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+            transition: all 0.3s ease;
+        }
+
+        /* Animação da frase */
+        .animar {
+            animation: fraseEntrando 0.7s ease;
+        }
+
+        @keyframes fraseEntrando {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(15px);
+                filter: blur(8px);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-3px);
+                filter: blur(0);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Botão */
+        button {
+            border: none;
+            outline: none;
+
+            padding: 17px 35px;
+
+            border-radius: 50px;
+
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            background: linear-gradient(
+                135deg,
+                #ff4ecd,
+                #1882e6
+            );
+
+            box-shadow:
+                0 8px 25px rgba(124, 92, 255, 0.4);
+
+            transition: all 0.3s ease;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+
+            width: 0;
+            height: 100%;
+
+            top: 0;
+            left: -10%;
+
+            background: rgba(255, 255, 255, 0.25);
+
+            transform: skewX(-20deg);
+
+            transition: width 0.5s ease;
+        }
+
+        button:hover::before {
+            width: 120%;
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.03);
+
+            box-shadow:
+                0 12px 35px rgba(124, 92, 255, 0.6);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .botao-texto {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contador */
+        #contador {
+            margin-top: 20px;
+
+            color: rgba(255, 255, 255, 0.6);
+
+            font-size: 13px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            #frase {
+                font-size: 19px;
+            }
+
+            .frase-box {
+                min-height: 180px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Elementos decorativos -->
+    <div class="bolha"></div>
+    <div class="bolha"></div>
+    <div class="bolha"></div>
+
+    <main class="container">
+
+        <div class="icone">✨</div>
+
+        <h1>Inspire-se</h1>
+
+        <p class="subtitulo">
+            Uma nova mensagem para deixar seu dia mais especial 💜
+        </p>
+
+        <div class="frase-box">
+            <p id="frase">
+                Clique no botão e descubra sua mensagem ✨
+            </p>
+        </div>
+
+        <button onclick="mostrarFrase()">
+            <span class="botao-texto">
+                ✨ Nova frase
+            </span>
+        </button>
+
+        <div id="contador">
+            0 / 50 frases
+        </div>
+
+    </main>
+
+    <script>
+
+        /*
+        ==========================================
+        50 FRASES MOTIVACIONAIS
+        ==========================================
+        */
+
+        const frases = [
+
+            "Acredite em você. Você é capaz de muito mais do que imagina. ✨",
+
+            "Grandes conquistas começam com pequenos passos. 👣",
+
+            "Não desista. Talvez você esteja mais perto do que imagina. 🚀",
+
+            "Seu esforço de hoje pode ser o motivo do seu orgulho amanhã. 💜",
+
+            "Você não precisa ser perfeito, apenas continuar evoluindo. 🌱",
+
+            "Acredite no processo e confie na sua jornada. 🌟",
+
+            "Cada novo dia é uma nova oportunidade para recomeçar. ☀️",
+
+            "O seu potencial é maior que o seu medo. 🔥",
+
+            "Continue caminhando, mesmo que seja devagar. 🛤️",
+
+            "Você já superou dias difíceis antes. Vai superar este também. 💪",
+
+            "Não compare seu capítulo 1 com o capítulo 20 de outra pessoa. 📖",
+
+            "Sonhe grande. Comece pequeno. Continue sempre. 🚀",
+
+            "A única pessoa que pode limitar o seu futuro é você mesmo. 🌈",
+
+            "Você está construindo algo incrível, mesmo que ainda não consiga enxergar. 🏗️",
+
+            "A persistência transforma sonhos em realidade. 💫",
+
+            "Não tenha medo de começar novamente. Recomeços também são oportunidades. 🌅",
+
+            "Faça hoje algo pelo qual seu futuro eu agradecerá. ❤️",
+
+            "Acredite: dias melhores estão sendo construídos por você. 🌻",
+
+            "Você é mais forte do que os obstáculos que aparecem no seu caminho. 🦁",
+
+            "Não espere estar motivado. Comece e a motivação aparecerá no caminho. ⚡",
+
+            "O sucesso é construído com pequenas decisões tomadas todos os dias. 🧱",
+
+            "Seu único limite é acreditar que você não consegue. 🚀",
+
+            "Continue. Seu futuro pode ser muito mais bonito do que você imagina. 🌟",
+
+            "Você não precisa saber todo o caminho. Só precisa dar o próximo passo. 👣",
+
+            "Transforme seus sonhos em metas e suas metas em ações. 🎯",
+
+            "Acredite na pessoa que você está se tornando. 💜",
+
+            "Toda dificuldade carrega uma oportunidade de crescimento. 🌱",
+
+            "Você consegue. Respire fundo e tente mais uma vez. 💪",
+
+            "O melhor momento para começar é agora. ⏰",
+
+            "Não desista de algo só porque está difícil. 🔥",
+
+            "A sua história ainda tem muitos capítulos incríveis para serem escritos. 📖",
+
+            "Seja paciente com você mesmo. Grandes mudanças levam tempo. 🌿",
+
+            "O progresso pode ser lento, mas ainda é progresso. 🚶",
+
+            "Você tem dentro de si tudo o que precisa para começar. ✨",
+
+            "Levante a cabeça. Você ainda tem muito para conquistar. 👑",
+
+            "A coragem começa quando você decide tentar. 🦋",
+
+            "Faça o seu melhor e deixe o resto acontecer naturalmente. 🌸",
+
+            "Cada erro é uma oportunidade para aprender algo novo. 📚",
+
+            "Não permita que um dia ruim faça você acreditar que sua vida é ruim. ☀️",
+
+            "Você merece acreditar nos seus próprios sonhos. 💭",
+
+            "A disciplina de hoje constrói a liberdade de amanhã. 🔑",
+
+            "Continue brilhando, mesmo quando ninguém estiver olhando. ✨",
+
+            "Você está crescendo, aprendendo e evoluindo todos os dias. 🌱",
+
+            "Nada muda se você não der o primeiro passo. 👣",
+
+            "Você é capaz de transformar dificuldades em experiências. 💎",
+
+            "Tenha fé no seu caminho e coragem para continuar. 🙏",
+
+            "O impossível de hoje pode ser a conquista de amanhã. 🚀",
+
+            "Não olhe apenas para o quanto falta. Olhe também para o quanto você já avançou. 🏆",
+
+            "Você chegou até aqui. Isso já prova que você é forte. ❤️",
+
+            "Seu futuro começa com aquilo que você decide fazer hoje. 🌅"
+
+        ];
+
+        /*
+        ==========================================
+        EMBARALHAR AS FRASES
+        ==========================================
+        */
+
+        function embaralhar(array) {
+
+            for (let i = array.length - 1; i > 0; i--) {
+
+                const j = Math.floor(
+                    Math.random() * (i + 1)
+                );
+
+                [array[i], array[j]] =
+                [array[j], array[i]];
+            }
+        }
+
+
+        /*
+        ==========================================
+        GARANTE UMA SEQUÊNCIA ALEATÓRIA
+        ==========================================
+        */
+
+        embaralhar(frases);
+
+        let indice = 0;
+
+
+        /*
+        ==========================================
+        MOSTRAR FRASE
+        ==========================================
+        */
+
+        function mostrarFrase() {
+
+            const elemento =
+                document.getElementById("frase");
+
+            const contador =
+                document.getElementById("contador");
+
+
+            /*
+            Remove a animação anterior
+            */
+
+            elemento.classList.remove("animar");
+
+
+            /*
+            Força o navegador a reiniciar
+            a animação
+            */
+
+            void elemento.offsetWidth;
+
+
+            /*
+            Coloca a nova frase
+            */
+
+            elemento.textContent =
+                frases[indice];
+
+
+            /*
+            Ativa a animação
+            */
+
+            elemento.classList.add("animar");
+
+
+            /*
+            Atualiza contador
+            */
+
+            contador.textContent =
+                `${indice + 1} / ${frases.length} frases`;
+
+
+            /*
+            Vai para a próxima frase
+            */
+
+            indice++;
+
+
+            /*
+            Quando chegar ao final,
+            embaralha tudo novamente.
+            */
+
+            if (indice >= frases.length) {
+
+                indice = 0;
+
+                setTimeout(() => {
+                    embaralhar(frases);
+                }, 500);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
